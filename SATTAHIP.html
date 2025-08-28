@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SATTAHIP</title>
+
+    <!-- Google Font Thai -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <style>
+      :root{
+        --brand: #e95420;
+        --brand-dark: #c24112;
+        --ink: #1b1f24;
+      }
+      body{font-family:"Noto Sans Thai", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; color: var(--ink)}
+      a{ text-decoration: none }
+      /* Topbar */
+      .topbar{font-size:.925rem; background:#0f172a; color:#cbd5e1}
+      .topbar a{color:#e2e8f0}
+      .topbar .divider{opacity:.3}
+      /* Navbar */
+      .navbar-brand span.logo{display:inline-block; font-weight:800; letter-spacing:.3px}
+      .navbar-brand .dot{color:var(--brand)}
+      .nav-link{font-weight:600}
+      .btn-apply{background:var(--brand); border:none}
+      .btn-apply:hover{background:var(--brand-dark)}
+      /* Hero */
+      .hero-slide{position:relative; min-height:56vh}
+      .hero-slide img{object-fit:cover; width:100%; height:56vh; filter:brightness(.78)}
+      .hero-caption{position:absolute; inset:0; display:grid; place-items:center; text-align:center; color:#fff}
+      .hero-caption .wrap{backdrop-filter:saturate(140%) blur(2px); background:rgba(0,0,0,.24); border-radius:1rem; padding:1.25rem 1.5rem}
+      .hero-badge{display:inline-block; background:var(--brand); color:#fff; padding:.35rem .7rem; border-radius:999px; font-size:.85rem; font-weight:700}
+
+      /* Ticker */
+      .ticker{background:#f8fafc; border-top:1px solid #e2e8f0; border-bottom:1px solid #e2e8f0}
+      .ticker .label{background:var(--brand); color:#fff; font-weight:700; padding:.5rem .75rem}
+      .ticker .items{overflow:hidden; position:relative}
+      .ticker ul{display:flex; gap:2rem; padding:0; margin:0; list-style:none; animation:marquee 22s linear infinite}
+      .ticker li{white-space:nowrap}
+      @keyframes marquee{ from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
+
+      /* Quick links */
+      .quicklink{border-radius:1rem; transition:transform .2s ease, box-shadow .2s ease; border:1px solid #e5e7eb}
+      .quicklink:hover{transform:translateY(-4px); box-shadow:0 10px 30px rgba(2,6,23,.08)}
+      .quicklink i{font-size:1.6rem}
+
+      /* Section heads */
+      .section-title{font-weight:800}
+      .section-sub{color:#475569}
+
+      /* News cards */
+      .news-card{border:none; border-radius:1rem; overflow:hidden; box-shadow:0 6px 22px rgba(2,6,23,.06)}
+      .news-card .badge{background:#0ea5e9}
+      .news-card img{height:200px; object-fit:cover}
+
+      /* Events */
+      .event{border:1px solid #e2e8f0; border-radius:1rem}
+      .event .date{background:#0f172a; color:#fff; border-radius:1rem 0 0 1rem}
+      .event .date h4{margin:0}
+
+      /* Stats */
+      .stat-card{border-radius:1rem; border:1px solid #e5e7eb; text-align:center; padding:2rem 1rem}
+      .stat-number{font-weight:800; font-size:2.2rem}
+
+      /* Faculties */
+      .faculty-card{border:none; border-radius:1rem; overflow:hidden; box-shadow:0 8px 28px rgba(2,6,23,.06)}
+      .faculty-card img{height:140px; object-fit:cover}
+
+      /* Partners */
+      .partner-track{display:flex; gap:3rem; overflow:hidden; mask-image:linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent)}
+      .partner-track .inner{display:flex; gap:3rem; animation:logos 30s linear infinite}
+      .partner{opacity:.8; filter:grayscale(100%); transition:opacity .2s ease, filter .2s ease}
+      .partner:hover{opacity:1; filter:none}
+      @keyframes logos{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+      /* Footer */
+      footer{background:#0b1220; color:#cbd5e1}
+      footer a{color:#e2e8f0}
+
+      /* Back to top */
+      #backToTop{position:fixed; right:1rem; bottom:1rem; display:none}
+
+      /* Utilities */
+      .rounded-2xl{border-radius:1rem}
+      .shadow-soft{box-shadow:0 10px 30px rgba(2,6,23,.08)}
+    </style>
+  </head>
+  <body>
+    <!-- Topbar -->
+    <div class="topbar py-1 small">
+      <div class="container d-flex align-items-center justify-content-between">
+        <div class="d-flex gap-3 align-items-center">
+          <span><i class="bi bi-telephone"></i> 081-058-5620</span>
+          <span class="divider">|</span>
+          <a href="#"><i class="bi bi-envelope"></i>  68319080042@.ac.th</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <i class="bi bi-tree-fill fs-4" style="color: var(--brand)"></i>
+          <span class="logo">SATTAHIP</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="สัตหีบ.html">สัตหีบ</a></li>
+            <li class="nav-item"><a class="nav-link" href="ความเป็นมา.html">ความเป็นมา</a></li>
+            <li class="nav-item"><a class="nav-link" href="คาเฟ่.html">คาเฟ่</a></li>
+            <li class="nav-item"><a class="nav-link" href="ที่พัก.html">ที่พัก</a></li>
+            <li class="nav-item dropdown">
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Carousel -->
+    <section id="home" class="position-relative">
+      <div id="hero" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#hero" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#hero" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#hero" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#hero" data-bs-slide-to="3" aria-label="Slide 4"></button>
+          <button type="button" data-bs-target="#hero" data-bs-slide-to="4" aria-label="Slide 5"></button>
+          <button type="button" data-bs-target="#hero" data-bs-slide-to="5" aria-label="Slide 6"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active hero-slide">
+            <img src="image/รูปยาว1.jpg" class="d-block w-100" alt="แบนเนอร์ 1" />
+            <div class="hero-caption">
+              <div class="wrap">
+                <h1 class="fw-bold display-6 mb-2">เกาะแสมสาร</h1>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item hero-slide">
+            <img src="image/รูปยาว2.jpg" class="d-block w-100" alt="แบนเนอร์ 2" />
+            <div class="hero-caption">
+              <div class="wrap">
+                <h2 class="fw-bold display-6 mb-2">หาดน้ำใส</h2>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item hero-slide">
+            <img src="image/รูปยาว3.jpg" class="d-block w-100" alt="แบนเนอร์ 3" />
+            <div class="hero-caption">
+              <div class="wrap">
+                <h2 class="fw-bold display-6 mb-2">หาดเตยงาม</h2>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item hero-slide">
+            <img src="image/รูปยาว4.jpg" class="d-block w-100" alt="แบนเนอร์ 3" />
+            <div class="hero-caption">
+              <div class="wrap">
+                <h2 class="fw-bold display-6 mb-2">หาดนางรำ</h2>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item hero-slide">
+            <img src="image/รูปยาว5.jpg" class="d-block w-100" alt="แบนเนอร์ 3" />
+            <div class="hero-caption">
+              <div class="wrap">
+                <h2 class="fw-bold display-6 mb-2">หาดทรายแก้ว</h2>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item hero-slide">
+            <img src="image/รูปยาว6.jpg" class="d-block w-100" alt="แบนเนอร์ 3" />
+            <div class="hero-caption">
+              <div class="wrap">
+                <h2 class="fw-bold display-6 mb-2">อนุสาวรีย์ทหารนาวิกโยธิน</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#hero" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#hero" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- News -->
+    <section id="news" class="py-5 bg-light-subtle">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-end mb-3">
+          <div>
+            <h2 class="section-title mb-1">สถานที่ท่องเที่ยว</h2>    
+            <div class="section-sub">สถานที่ท่องเที่ยวอันดับต้นๆ ของอำเภอสัตหีบ</div>
+          </div>
+        </div>
+        <div class="row g-4">
+          <!-- 6 sample news cards -->
+          <!-- Repeatable card component -->
+          <div class="col-sm-6 col-lg-4">
+            <article class="card news-card h-100">
+              <img src="image/เกาะแสมสาร.jpg" class="card-img-top" alt="news" />
+              <div class="card-body">
+                <h5 class="card-title mt-2">เกาะแสมสาร</h5>
+                <p class="card-text text-secondary">เกาะแสมสารเป็นเกาะที่อยู่ทางตะวันออกของประเทศไทยในพื้นที่สัตหีบ ซึ่งอยู่ในเขตการดูแลของกองทัพเรือ 
+                    <br>ความสวยงามและบรรยากาศที่เงียบสงบของเกาะแสมสาร <br>ได้รับความนิยมจากนักท่องเที่ยวทั้งในและต่างชาติ บนเกาะแสมสารมีกิจกรรมหลากหลายที่น่าสนใจที่คุณสามารถทำได้ 
+                    <br>เช่น ดำน้ำตื้นเพื่อชมปะการังที่สวยงามในทะเล</p>
+                <div class="d-flex justify-content-between align-items-center small text-secondary">
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-sm-6 col-lg-4">
+            <article class="card news-card h-100">
+              <img src="image/หาดน้ำใส.jpg" class="card-img-top" alt="news" />
+              <div class="card-body">
+                <h5 class="card-title mt-2">หาดน้ำใส</h5>
+                <p class="card-text text-secondary">หาดน้ำใสในสัตหีบเป็นหนึ่งในสถานที่ท่องเที่ยวทะเลที่ใกล้กรุงเทพฯ และมีความสะอาดเป็นอย่างดี 
+                    มีทรายขาวที่สะอาดและน้ำทะเลสีฟ้าที่ใสจนรู้สึกตื่นเต้นตลอดเวลา เป็นที่ตั้งที่เหมาะแก่การพักผ่อนและเล่นน้ำของครอบครัวหรือกลุ่มเพื่อน 
+                    <br>โดยพื้นที่นี้ได้รับการดูแลโดยกองทัพเรือ <br>เพลิดเพลินกับน้ำทะเลและพักผ่อนบนหาดทรายขาวสะอาด</p>
+                <div class="d-flex justify-content-between align-items-center small text-secondary">
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-sm-6 col-lg-4">
+            <article class="card news-card h-100">
+              <img src="image/หาดเตยงาม.jpg" class="card-img-top" alt="news" />
+              <div class="card-body">
+                <h5 class="card-title mt-2">หาดเตยงาม</h5>
+                <p class="card-text text-secondary">หาดเตยงามเป็นหาดที่มีความสวยงามมากในอำเภอสัตหีบ 
+                    <br>ซึ่งตั้งอยู่ในเขตของฐานทัพเรือสัตหีบนาวิกโยธิน <br>หาดนี้มีความกว้างในช่วงที่น้ำลง และน้ำทะเลที่ใสและสีฟ้าคราม
+                    <br>ทุกคนควรได้มีโอกาสเยี่ยมชมหาดเตยงามนี้เพื่อสัมผัสบรรยากาศและความสวยงามที่เป็นเอกลักษณ์ของสถานที่นี้</p>
+                <div class="d-flex justify-content-between align-items-center small text-secondary">
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-sm-6 col-lg-4">
+            <article class="card news-card h-100">
+              <img src="image/หาดนางรำ.jpg" class="card-img-top" alt="news" />
+              <div class="card-body">
+                <h5 class="card-title mt-2">หาดนางรำ</h5>
+                <p class="card-text text-secondary">หาดนางรำเป็นหาดที่ตั้งอยู่ในท่าเรือจุกเสม็ด <br>ซึ่งเป็นส่วนหนึ่งของการท่าเรือสัตหีบ 
+                    <br>หาดนางรำจะอยู่ใกล้กับหาดนางรอง <br>โดยหาดนางรำจะเป็นหาดที่ถึงก่อนและหาดนางรองตามมาถัดจากนั้น 
+                    หาดนางรำเป็นสถานที่ท่องเที่ยวที่มีบรรยากาศชายทะเลที่สวยงาม มีชายหาดทรายละเอียดและน้ำทะเลใสสะอาด 
+                    <br>ซึ่งเป็นที่ต้องสัมผัสของทหารเรือและประชาชนทั่วไปได้เข้ามาพักผ่อนและเล่นน้ำได้</p>
+                <div class="d-flex justify-content-between align-items-center small text-secondary">
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-sm-6 col-lg-4">
+            <article class="card news-card h-100">
+              <img src="image/หาดทรายแก้ว.jpg" class="card-img-top" alt="news" />
+              <div class="card-body">
+                <h5 class="card-title mt-2">หาดทรายแก้ว</h5>
+                <p class="card-text text-secondary">หาดทรายแก้ว <br>เป็นหาดที่ตั้งอยู่ในเขตของโรงเรียนชุมพลทหารเรือ 
+                    <br>มีความยาวประมาณ 1 กิโลเมตรและเป็นจุดที่มีน้ำทะเลสวยงามและใสมากๆ <br>นักท่องเที่ยวสามารถดำน้ำตื้นเพื่อชมปะการังและความสวยงามใต้น้ำได้ 
+                    <br>นอกจากนี้ยังมีป่าละเมาะที่เป็นธรรมชาติอยู่รอบนอกหาดทรายแก้วด้วย หาดทรายแก้วเป็นที่นิยมอย่างมากโดยนักท่องเที่ยว</p>
+                <div class="d-flex justify-content-between align-items-center small text-secondary">
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-sm-6 col-lg-4">
+            <article class="card news-card h-100">
+              <img src="image/อนุสาวรีย์ทหารนาวิกโยธิน.jpg" class="card-img-top" alt="news" />
+              <div class="card-body">
+                <h5 class="card-title mt-2">อนุสาวรีย์ทหารนาวิกโยธิน</h5>
+                <p class="card-text text-secondary">อนุสาวรีย์ทหารนาวิกโยธินเป็นสถานที่ท่องเที่ยวที่สัตหีบที่คุณไม่ควรพลาดเลยค่ะ 
+                    <br>มันเป็นแหล่งท่องเที่ยวและแลนด์มาร์คที่สร้างขึ้นเพื่อเป็นการระลึกถึงเหล่าทหารนาวิกโยธินที่เสียสละชีวิตและเลือดเนื้อเพื่อปกป้องประเทศชาติของเราค่ะ 
+                    <br>อนุสาวรีย์ตั้งอยู่บริเวณหาดเตยงามที่เรียกว่าอ่าวนาวิกโยธิน และมีการออกแบบอย่างสวยงามและสร้างขึ้นเพื่อเป็นอนุสรณ์และเคารพสิ่งที่ทหารนาวิกโยธินได้ทำไว้ให้กับชาติ 
+                    สถาปัตยกรรมของอนุสาวรีย์มีความสง่างามและมีความหลากหลาย</p>
+                <div class="d-flex justify-content-between align-items-center small text-secondary">
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Faculties -->
+    <section id="faculties" class="py-5">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-4">
+          </div>
+          <div class="col-md-4">
+          </div>
+          <div class="col-md-4">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research -->
+    <section id="research" class="py-5 bg-light-subtle">
+      <div class="container">
+        <div class="row align-items-center g-4"
+        </div>
+      </div>
+    </section>
+
+    <!-- Video -->
+    <section class="py-5">
+      <div class="container">
+      </div>
+    </section>
+
+    <!-- Contact / Footer -->
+    <footer id="contact" class="pt-5">
+      <div class="container pb-4">
+        <div class="row g-4">
+          <div class="col-lg-4">
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button id="backToTop" class="btn btn-dark rounded-circle p-2" aria-label="Back to top">
+      <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const counters = document.querySelectorAll('.stat-number');
+      const speed = 16;
+      const animate = () => {
+        counters.forEach(c => {
+          const target = +c.getAttribute('data-count');
+          const current = +c.textContent.replace(/,/g,'');
+          const inc = Math.max(1, Math.floor(target / 120));
+          if(current < target){
+            c.textContent = (current + inc).toLocaleString();
+          } else {
+            c.textContent = target.toLocaleString();
+          }
+        });
+        if([...counters].some(c => +c.textContent.replace(/,/g,'') < +c.getAttribute('data-count'))){
+          requestAnimationFrame(animate);
+        }
+      };
+      const onVisible = (el, cb) => {
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(e => { if(e.isIntersecting){ cb(); io.disconnect(); } });
+        });
+        io.observe(el);
+      };
+      onVisible(document.querySelector('.stat-card'), animate);
+
+      // Back to top visibility
+      const backBtn = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        backBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+      });
+      backBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+    </script>
+  </body>
+</html>
